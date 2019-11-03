@@ -1,0 +1,12 @@
+!.keep
+*.dot
+*.DS_Store
+*.swo
+*.swp
+stdout
+/.env
+/log/*
+/node_modules/*
+/tmp/*
+spec/test_files
+/.vscode/*
