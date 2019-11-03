@@ -8,7 +8,7 @@ import {
 import { Provider } from "react-redux";
 import thunkMiddleware from "redux-thunk";
 
-import { recordReducer } from "../../record-redux/Reducer";
+import { BASE_COMPONENT_NAMEReducer } from "./Reducers";
 
 import MainContainerName from "./MAIN_CONTAINER_NAME";
 
@@ -25,12 +25,10 @@ class BASE_COMPONENT_NAME extends Component {
       storeMessage: "",
     };
 
-    /* eslint-disable no-underscore-dangle */
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    /* eslint-enable */
 
     const store = createStore(
-      recordReducer,
+      BASE_COMPONENT_NAMEReducer,
       initialState,
       composeEnhancers(
         applyMiddleware(thunkMiddleware),

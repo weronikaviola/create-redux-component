@@ -2,17 +2,19 @@
   "name": "create-redux-component",
   "version": "0.0.1",
   "description": "",
-  "main": "run.js",
+  "main": "index.js",
+  "bin": {
+    "create-redux-component": "tasks/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "create-redux-component": "node tasks/run.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/weronikaviola/create-redux-component.git"
   },
   "author": "Weronika Miller <contact@weronikamiller.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/weronikaviola/create-redux-component/issues"
   },

@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-import { setState } from "../../record-redux/Actions";
 import {
-// import actions here...
+  setState,
 } from "./Actions";
 
 import MAIN_COMPONENT_NAME from "./MAIN_COMPONENT_NAME";

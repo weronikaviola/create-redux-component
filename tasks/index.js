@@ -1,18 +1,10 @@
+#!/usr/bin/env node
+
 const chalk = require("chalk");
 const fs = require("fs-extra");
 const path = require("path");
 const program = require("commander");
 const replace = require("replace-in-file");
-
-function addToReactBundle(
-  componentPath,
-  componentName,
-) {
-  const relativePath = `./react/${componentPath.substring(componentPath.indexOf("components"), componentPath.length-4)}`;
-  return (
-    `window.${componentName} = require("${relativePath}");`
-  );
-}
 
 async function run(
   appPath,
@@ -64,15 +56,9 @@ async function run(
     return;
   }
 
-  const reactBundleHelper = addToReactBundle(baseComponentPath, baseComponentName);
-
   console.log("🎊  🎊  Success! 🎊  🎊");
   console.log("Your components are available at");
   console.log(`${chalk.blue.underline(`${appPath.substring(appPath.indexOf("app"))}`)}`);
-  console.log();
-  console.log();
-  console.log("Don't forget to copy this line into 'react-bundle.js' file: ");
-  console.log(`${chalk.bold.blue.bgWhite(reactBundleHelper)}`);
   console.log();
 }
 
