@@ -5,5 +5,5 @@ export function setState({ param, value }) {
     type: SET_STATE,
     param,
     value,
-  }
-};
+  };
+}

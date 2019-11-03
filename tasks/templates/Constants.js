@@ -1,2 +1,1 @@
-export const WELCOME_BANNER = "Welcome!";
-export const DESCRIPTION = "blablablb this is the app description";
+export const DESCRIPTION = "Use Create-Redux-Component to quickly generate a basic React-Redux setup.";

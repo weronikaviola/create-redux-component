@@ -17,6 +17,7 @@ async function run(
   const mainComponentPath = path.join(appPath, `${mainComponentName}.jsx`);
   const mainContainerName = `${mainComponentName}Container`;
   const mainContainerPath = path.join(appPath, `${mainContainerName}.jsx`);
+  const reducerPath = path.join(appPath, "Reducers.js");
 
   if (fs.existsSync(templatePath)) {
     try {
@@ -29,7 +30,7 @@ async function run(
       ])
 
       await replace({
-        files: [baseComponentPath, mainComponentPath, mainContainerPath],
+        files: [baseComponentPath, mainComponentPath, mainContainerPath, reducerPath],
         from: [
           /BASE_COMPONENT_NAME/g,
           /MAIN_COMPONENT_NAME/g,
@@ -69,10 +70,7 @@ async function createComponent(
   componentName = undefined,
 ) {
   const dirPath = path.resolve(directoryPath);
-  console.log("dirpath: ", dirPath);
-  console.log(directoryName);
   const root = path.join(dirPath, directoryName);
-  console.log(" this is root", root);
   const appName = (componentName || path.basename(root)).replace(/(\b|\s)\w/g, char => char.toUpperCase()).replace(/-/g, "");
 
   fs.ensureDirSync(root);
@@ -95,17 +93,26 @@ async function createComponent(
   );
 }
 
-let directoryPath;
 let directoryName;
 
 program
   .name("create_redux_component")
-  .arguments("<directory-path> <directory-name>")
-  .action((path, name) => {
+  .arguments("<directory-name>")
+  .action((name, path) => {
     directoryPath = path;
     directoryName = name;
   })
+  .option("-p, --path <path>", "Specify path to the component's directory")
   .option("-n, --root_name <name>", "Specify name of the root component")
+  .allowUnknownOption()
+  .on("--help", () => {
+    console.log();
+    console.log(`    ${chalk.red("<directory-name>")} is required.`);
+    console.log();
+    console.log(`${chalk.magentaBright("Please report bugs and other issues here:")}`)
+    console.log("https://github.com/weronikaviola/create-redux-component/issues");
+    console.log();
+  })
   .parse(process.argv);
 
 if (typeof directoryName === "undefined") {
@@ -118,11 +125,15 @@ if (typeof directoryName === "undefined") {
   console.log(
     `${chalk.yellow("--root_name")} or ${chalk.yellow("-n")}\t${chalk.gray("Specify name of the root component")}`,
   );
+  console.log(
+    `${chalk.yellow("--path")} or ${chalk.yellow("-p")}\t\t${chalk.gray("Specify path to the root component")}`
+  )
   console.log();
   process.exit(1);
 }
+
 createComponent(
-  directoryPath,
+  program.path || ".",
   directoryName,
   program.root_name,
 );

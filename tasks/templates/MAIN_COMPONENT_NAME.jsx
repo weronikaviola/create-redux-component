@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { DESCRIPTION } from "./Constants";
+
 const MAIN_COMPONENT_NAME = (props) => {
   const {
     message,
@@ -10,23 +12,30 @@ const MAIN_COMPONENT_NAME = (props) => {
 
   const onClick = () => {
     setState({
-      storeMessage: "🎊  🎊 You have successfully connected to Redux store! 🎊  🎊",
+      param: "storeMessage",
+      value: "🎊  🎊 You have successfully connected to Redux store! 🎊  🎊",
     });
   };
 
   return (
-    <div className="card">
-      <div className="card__header">
-        {message}
-      </div>
-      <div className="row">
-        <span className="bold">Redux Store Connection:&nbsp;</span>
+    <div style={{
+      background: "#fff",
+      border: "1px solid gray",
+      borderRadius: "4px",
+    }}>
+      <h1>{message}</h1>
+      <h5>{DESCRIPTION}</h5>
+      <div>
+        <b>Redux Store Connection:&nbsp;</b>
         {storeMessage}
       </div>
       <button
         type="button"
         onClick={onClick}
-        className="btn btn--green"
+        style={{
+          background: "#12cc7c",
+          border: "none",
+        }}
       >
         TEST CONNECTION!
       </button>
@@ -35,13 +44,9 @@ const MAIN_COMPONENT_NAME = (props) => {
 };
 
 MAIN_COMPONENT_NAME.propTypes = {
-  message: PropTypes.string,
+  message: PropTypes.string.isRequired,
   setState: PropTypes.func.isRequired,
   storeMessage: PropTypes.string.isRequired,
-};
-
-MAIN_COMPONENT_NAME.defaultProps = {
-  message: "Hello!",
 };
 
 export default MAIN_COMPONENT_NAME;
