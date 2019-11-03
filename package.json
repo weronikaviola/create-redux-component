@@ -1,0 +1,26 @@
+{
+  "name": "create-redux-component",
+  "version": "0.0.1",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create-redux-component": "node tasks/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weronikaviola/create-redux-component.git"
+  },
+  "author": "Weronika Miller <contact@weronikamiller.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weronikaviola/create-redux-component/issues"
+  },
+  "homepage": "https://github.com/weronikaviola/create-redux-component#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^4.0.0",
+    "fs-extra": "^8.1.0",
+    "replace-in-file": "^4.2.0"
+  }
+}
