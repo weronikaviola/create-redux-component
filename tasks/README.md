@@ -1,1 +1,0 @@
-# create-redux-component
