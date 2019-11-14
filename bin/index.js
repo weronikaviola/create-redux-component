@@ -10,7 +10,7 @@ async function run(
   appPath,
   componentName,
 ) {
-  const templatePath = path.join(__dirname, "templates");
+  const templatePath = path.resolve(__dirname, "../lib", "templates");
   const baseComponentName = componentName.replace(/(\b|\s)\w/g, char => char.toUpperCase()).replace(/-/g, "");
   const baseComponentPath = path.join(appPath, `${baseComponentName}.jsx`);
   const mainComponentName = `${baseComponentName}Main`;
